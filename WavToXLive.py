@@ -98,8 +98,8 @@ def GetWavFile():
     global feedBack
     global feedBack2
     global getWavButton
-    wavFile = filedialog.askopenfilename(title=".wav datei auswählen", filetypes=[("Waves", "*wav")])
-    print("Ausgewählte Datei:", wavFile)
+    wavFile = filedialog.askopenfilename(title="Select .wav file", filetypes=[("Waves", "*wav")])
+    print("Selected file:", wavFile)
     hasWav = True
     feedBack.configure(text="", background="grey")
     feedBack2.configure(text="", background="grey")
@@ -110,8 +110,8 @@ def GetOutFolder():
     global feedBack
     global feedBack2
     global getOutOrdnerButton
-    outFolder = filedialog.askdirectory(title="Output Ordner auswählen")
-    print("Ausgewählter Ordner:", outFolder)
+    outFolder = filedialog.askdirectory(title="Select output folder")
+    print("Selected folder:", outFolder)
     hasOrdner = True
     feedBack.configure(text="", background="grey")
     feedBack2.configure(text="", background="grey")
@@ -158,15 +158,15 @@ def Convertieren():
         n_frames = wav.getnframes()
         
         
-        print("Anzahl Kanäle:", n_channels)
-        print("Sample-Breite (Bytes):", sample_width)
+        print("Channel count:", n_channels)
+        print("Sample Resolution(Bytes):", sample_width)
         print("Sample-Rate:", framerate)
-        print("Anzahl Samples:", n_frames)  # DAS ist die gesuchte Zahl
+        print("Samplecount:", n_frames)  # DAS ist die gesuchte Zahl
 
         seconds = n_frames / framerate
         
-        print("Minuten: ", math.floor(seconds / 60))
-        print("Sekunden: ", seconds % 60)
+        print("min: ", math.floor(seconds / 60))
+        print("sec: ", seconds % 60)
 
         data = wav.readframes(n_frames)
         
@@ -206,7 +206,7 @@ def Convertieren():
                     outW.write(data[(int(frame) * sample_width * n_channels) + b].to_bytes(1, "little"))
                 for i in range(0, fillChannels):
                     outW.write(int(0).to_bytes(sample_width, "little"))
-                print(frame)
+                #print(f"frame", end="r")
                     
 
     shortName = eingabe.get()[:16]
@@ -249,7 +249,7 @@ def Convertieren():
             f.write(zero.to_bytes(4, "little"))
         
         feedBack.configure(text=  "" + shortName, background="purple")
-        feedBack2.configure(text=  "Erfolgreich erstellt", background="purple")
+        feedBack2.configure(text=  "Done", background="purple")
     
 
     ordner_pfad = outPath
@@ -283,10 +283,10 @@ root.configure(background="grey")
 root.focus = True
 root.tk.call('tk', 'scaling', density)
 
-getWavButton = tk.Button(root, text="Wav auswählen", command=GetWavFile, font=("Arial", fontSize), background="red", fg="lime green")
+getWavButton = tk.Button(root, text="Select .wav", command=GetWavFile, font=("Arial", fontSize), background="red", fg="lime green")
 getWavButton.pack(pady=10)
 
-getOutOrdnerButton = tk.Button(root, text="Ordner Auswählen", command=GetOutFolder, font=("Arial", fontSize), background="red", fg="lime green")
+getOutOrdnerButton = tk.Button(root, text="Select folder", command=GetOutFolder, font=("Arial", fontSize), background="red", fg="lime green")
 getOutOrdnerButton.pack(pady=10)
 
 
@@ -297,7 +297,7 @@ titel.pack(pady=16)
 eingabe = tk.Entry(root, font=("Arial", fontSize), background="purple", fg="lime green")
 eingabe.pack(pady=16)
 
-convertButton = tk.Button(root, text="Convertieren", command=Convertieren, font=("Arial", fontSize), background="purple", fg="lime green")
+convertButton = tk.Button(root, text="Convert", command=Convertieren, font=("Arial", fontSize), background="purple", fg="lime green")
 convertButton.pack(pady=10)
 
 feedBack = tk.Label(root, text="", font=("Arial", int(fontSize)), background="grey", fg="lime green")

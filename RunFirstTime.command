@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starte macOS-Python-Setup..."
+echo "Start macOS-Python-Setup..."
 
 # Prüfe Python-Version
 echo "Python-Version:"
@@ -11,16 +11,16 @@ echo "Pip-Version:"
 pip3 --version
 
 # Upgrade pip
-echo "Aktualisiere pip..."
+echo "Update pip..."
 pip3 install --upgrade pip
 
 pip3 install numpy
 
 # Tkinter-Verfügbarkeit prüfen
-echo "Prüfe Tkinter..."
-python3 -c "import tkinter; print('Tkinter ist verfügbar. Version:', tkinter.TkVersion)" \
+echo "Check Tkinter..."
+python3 -c "import tkinter; print('Tkinter is available. Version:', tkinter.TkVersion)" \
   || {
-    echo "Tkinter nicht gefunden. Installiere via Homebrew..."
+    echo "Tkinter not found. Install via Homebrew..."
     if ! command -v brew &> /dev/null; then
       echo "Homebrew wird installiert..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -28,7 +28,7 @@ python3 -c "import tkinter; print('Tkinter ist verfügbar. Version:', tkinter.Tk
     brew install python-tk
   }
 
-echo "Setup abgeschlossen!"
+echo "Setup Done!"
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 

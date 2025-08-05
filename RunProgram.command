@@ -2,6 +2,6 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-echo Starte python programm...
+echo Start python programm...
 
 python3 WavToXLive.py
