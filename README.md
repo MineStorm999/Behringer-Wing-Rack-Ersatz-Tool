@@ -19,3 +19,6 @@ The official Wing Live Sessions Software didn't work every time, thus not usable
 - In MacOS the used tkinter UI doesn't work properly:
     - Design insn't used at all
     - You cant see Lables and Text inputs(but you can use them)
+
+## Usage Terms
+Consider sending me an email or just Star the Repo, if you are actually using it. Otherwise it's MIT License so do what you want with it. Also I do not take any responsibility 
